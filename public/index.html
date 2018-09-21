@@ -1,0 +1,63 @@
+<html>
+
+<head>
+  <title>Express</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <h4 style="width: 100%">Items <span class="badge badge-primary badge-pill">0</span><button type="button" id="addNewItem" class="btn btn-primary" style="float: right">New Item</button></h4>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <li class='list-group-item listElementTemplate' hidden>
+          <div class="actions">
+            <button type="button" class="btn btn-warning">Edit</button>
+            <button type="button" class="btn btn-danger">Delete</button>
+          </div>
+        </li>
+        <ul class="list-group sortable-items"></ul>
+      </div>
+    </div>
+  </div>
+  <div class="dialog-container">
+    <div class="dialog">
+      <div class="bd-callout bd-callout-info">
+          <div class="row">
+            <h4>Add new Item</h4>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <form class="bd-example" id="item-description-create">
+                <div class="form-group">
+                  <label for="item-description">Description</label>
+                  <input type="text" maxlength="300" required id="item-description" name="description" class="form-control" />
+                  <input type="hidden" name="_id"/>
+                </div>
+                <div class="form-group">
+                  <input type="file" name="image" accept="image/*" />
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="reset" class="btn btn-primary">Cancel</button>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="loader">
+    <svg viewBox="0 0 32 32" width="32" height="32">
+      <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+    </svg>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sortable/0.9.13/jquery-sortable-min.js" crossorigin="anonymous"></script>
+  <script src="/javascripts/spa.js"></script>
+</body>
+
+</html>

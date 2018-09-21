@@ -1,0 +1,35 @@
+version: '3'
+networks: 
+  spa-net:
+services:
+  mongodb: 
+    image: 'mongo:4.1.2-xenial'
+    ports: 
+      - '27017:27017'
+    # volumes: 
+    #   - './data:/data/db'
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=spa
+      - MONGO_INITDB_ROOT_PASSWORD=spa
+    networks: 
+      - spa-net
+  spa:
+    build: ./
+    volumes: 
+      - ./routes:/usr/src/spa/routes
+      - ./bin:/usr/src/spa/bin
+      - ./public:/usr/src/spa/public
+    depends_on:
+      - mongodb
+    ports:
+      - '3000:3000'
+      - '9229:9229'
+    environment:
+      - NODE_ENV=development
+      - NODE_INSPECT_BRK=false
+      - SPA_DB_USERNAME=spa
+      - SPA_DB_PASSWORD=spa
+      - SPA_DB_NAME=spa
+      - SPA_DB_URL=mongodb://mongodb
+    networks: 
+      - spa-net
